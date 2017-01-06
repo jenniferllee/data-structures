@@ -24,6 +24,7 @@ def unique_houses(filename):
         if house:
             houses.add(house)
 
+    cohort_file.close()
     return houses
 
 
@@ -79,6 +80,7 @@ def sort_by_cohort(filename):
 
     all_students.extend([winter_16, spring_16, summer_16, fall_15, ghosts])
 
+    cohort_file.close()
     return all_students
 
 
@@ -160,6 +162,7 @@ def students_by_house(filename):
 
     all_students.extend([gryffindor, hufflepuff, ravenclaw, slytherin, dumbledores_army, ghosts, instructors])
 
+    cohort_file.close()
     return all_students
 
 
