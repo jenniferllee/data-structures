@@ -17,6 +17,13 @@ def unique_houses(filename):
 
     # Code goes here
 
+    cohort_file = open(filename)
+    for line in cohort_file:
+        tokens = line.split('|')
+        house = tokens[2]
+        if house:
+            houses.add(house)
+
     return houses
 
 
@@ -30,7 +37,7 @@ def sort_by_cohort(filename):
         ex. fall_15 = ["Colin Creevey", "Dennis Creevey", "Seamus Finnigan", ""Hermione Granger", ... ]
         ex. all_students = [["Colin Creevey", "Dennis Creevey", "Seamus Finnigan", ...],
         ["Lee Jordan", "Andrew Kirke", "Neville Longbottom", ...],
-        ["Cormac McLaggen", "Parvati Patil", "Jimmy Peakes", ...], 
+        ["Cormac McLaggen", "Parvati Patil", "Jimmy Peakes", ...],
         ["Euan Abercrombie", "Katie Bell", "Lavender Brown", ...]]
 
     """
@@ -43,6 +50,34 @@ def sort_by_cohort(filename):
     ghosts = []
 
     # Code goes here
+
+    cohort_file = open(filename)
+
+    for line in cohort_file:
+        tokens = line.rstrip().split('|')
+        first_name = tokens[0]
+        last_name = tokens[1]
+        full_name = first_name + " " + last_name
+        cohort = tokens[4]
+
+        if cohort == "Fall 2015":
+            fall_15.append(full_name)
+        elif cohort == "Spring 2016":
+            spring_16.append(full_name)
+        elif cohort == "Summer 2016":
+            summer_16.append(full_name)
+        elif cohort == "Winter 2016":
+            winter_16.append(full_name)
+        elif cohort == "G":
+            ghosts.append(full_name)
+
+    winter_16.sort()
+    spring_16.sort()
+    summer_16.sort()
+    fall_15.sort()
+    ghosts.sort()
+
+    all_students.extend([winter_16, spring_16, summer_16, fall_15, ghosts])
 
     return all_students
 
@@ -167,7 +202,7 @@ def find_house_members_by_student_name(student_list):
 # Here is some useful code to run these functions!
 
 # print unique_houses("cohort_data.txt")
-# print sort_by_cohort("cohort_data.txt")
+print sort_by_cohort("cohort_data.txt")
 # print hogwarts_by_house("cohort_data.txt")
 # all_students_data = all_students_tuple_list("cohort_data.txt")
 # print all_students_data
