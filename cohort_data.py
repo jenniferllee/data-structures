@@ -212,7 +212,12 @@ def find_cohort_by_student_name(student_list):
 
     # Code goes here
 
-    return "Student not found."
+    user_search = raw_input("Please enter student's full name: ")
+    cohort = [student_tuple[3] for student_tuple in student_list if user_search == student_tuple[0]]
+    if cohort:
+        return cohort[0]
+    else:
+        return "Student not found."
 
 
 ##########################################################################################
@@ -271,7 +276,7 @@ def find_house_members_by_student_name(student_list):
 # print sort_by_cohort("cohort_data.txt")
 # print students_by_house("cohort_data.txt")
 all_students_data = all_students_tuple_list("cohort_data.txt")
-print all_students_data
-# find_cohort_by_student_name(all_students_data)
+# print all_students_data
+print find_cohort_by_student_name(all_students_data)
 # print find_name_duplicates("cohort_data.txt")
 # find_house_members_by_student_name(all_students_data)
