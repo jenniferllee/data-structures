@@ -214,7 +214,8 @@ def find_cohort_by_student_name(student_list):
 
     user_search = raw_input("Please enter student's full name: ")
     cohort = [student_tuple[3] for student_tuple in student_list if user_search == student_tuple[0]]
-    if cohort:
+
+    if len(cohort) > 0:
         return cohort[0]
     else:
         return "Student not found."
